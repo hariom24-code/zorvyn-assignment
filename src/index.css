@@ -17,6 +17,7 @@ body {
     radial-gradient(circle at 88% 85%, rgba(20, 184, 166, 0.16), transparent 32%),
     linear-gradient(160deg, #f8fafc 0%, #f0fdfa 45%, #ecfeff 100%);
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 #root {

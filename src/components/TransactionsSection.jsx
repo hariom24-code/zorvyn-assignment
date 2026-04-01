@@ -116,53 +116,96 @@ function TransactionsSection({
 
       <div className="mt-5 overflow-hidden rounded-2xl border border-slate-200/80 dark:border-slate-700">
         {visibleTransactions.length ? (
-          <div className="overflow-x-auto">
-            <table className="w-full min-w-[720px] text-left text-sm">
-              <thead className="bg-slate-100/80 text-slate-600 dark:bg-slate-800 dark:text-slate-300">
-                <tr>
-                  <th className="px-4 py-3 font-medium">Date</th>
-                  <th className="px-4 py-3 font-medium">Category</th>
-                  <th className="px-4 py-3 font-medium">Type</th>
-                  <th className="px-4 py-3 font-medium">Amount</th>
-                  <th className="px-4 py-3 font-medium">Note</th>
-                  {role === 'admin' ? <th className="px-4 py-3 font-medium">Action</th> : null}
-                </tr>
-              </thead>
+          <>
+            <div className="divide-y divide-slate-200 bg-white dark:divide-slate-800 dark:bg-slate-900/40 md:hidden">
+              {visibleTransactions.map((transaction) => (
+                <article key={transaction.id} className="space-y-3 p-4">
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <p className="text-sm font-medium text-slate-900 dark:text-slate-100">{transaction.category}</p>
+                      <p className="mt-1 text-xs text-slate-500">{transaction.date}</p>
+                    </div>
+                    <span
+                      className={`rounded-full px-2 py-1 text-xs capitalize ${
+                        transaction.type === 'income'
+                          ? 'bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300'
+                          : 'bg-rose-100 text-rose-700 dark:bg-rose-900/40 dark:text-rose-300'
+                      }`}
+                    >
+                      {transaction.type}
+                    </span>
+                  </div>
 
-              <tbody className="divide-y divide-slate-200 bg-white dark:divide-slate-800 dark:bg-slate-900/40">
-                {visibleTransactions.map((transaction) => (
-                  <tr key={transaction.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/60">
-                    <td className="px-4 py-3">{transaction.date}</td>
-                    <td className="px-4 py-3">{transaction.category}</td>
-                    <td className="px-4 py-3 capitalize">
-                      <span
-                        className={`rounded-full px-2 py-1 text-xs ${
-                          transaction.type === 'income'
-                            ? 'bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300'
-                            : 'bg-rose-100 text-rose-700 dark:bg-rose-900/40 dark:text-rose-300'
-                        }`}
-                      >
-                        {transaction.type}
-                      </span>
-                    </td>
-                    <td className="px-4 py-3 font-medium">{formatCurrency(transaction.amount)}</td>
-                    <td className="px-4 py-3 text-slate-500">{transaction.note || '--'}</td>
-                    {role === 'admin' ? (
-                      <td className="px-4 py-3">
-                        <button
-                          type="button"
-                          onClick={() => openEditModal(transaction)}
-                          className="rounded-lg border border-slate-200 px-3 py-1 text-xs text-slate-600 transition hover:bg-slate-100 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
-                        >
-                          Edit
-                        </button>
-                      </td>
-                    ) : null}
+                  <div className="flex items-center justify-between">
+                    <p className="text-sm text-slate-500">Amount</p>
+                    <p className="text-sm font-semibold text-slate-900 dark:text-slate-100">
+                      {formatCurrency(transaction.amount)}
+                    </p>
+                  </div>
+
+                  <p className="text-xs text-slate-500">{transaction.note || '--'}</p>
+
+                  {role === 'admin' ? (
+                    <button
+                      type="button"
+                      onClick={() => openEditModal(transaction)}
+                      className="rounded-lg border border-slate-200 px-3 py-1 text-xs text-slate-600 transition hover:bg-slate-100 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+                    >
+                      Edit
+                    </button>
+                  ) : null}
+                </article>
+              ))}
+            </div>
+
+            <div className="hidden overflow-x-auto md:block">
+              <table className="w-full min-w-[720px] text-left text-sm">
+                <thead className="bg-slate-100/80 text-slate-600 dark:bg-slate-800 dark:text-slate-300">
+                  <tr>
+                    <th className="px-4 py-3 font-medium">Date</th>
+                    <th className="px-4 py-3 font-medium">Category</th>
+                    <th className="px-4 py-3 font-medium">Type</th>
+                    <th className="px-4 py-3 font-medium">Amount</th>
+                    <th className="px-4 py-3 font-medium">Note</th>
+                    {role === 'admin' ? <th className="px-4 py-3 font-medium">Action</th> : null}
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                </thead>
+
+                <tbody className="divide-y divide-slate-200 bg-white dark:divide-slate-800 dark:bg-slate-900/40">
+                  {visibleTransactions.map((transaction) => (
+                    <tr key={transaction.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/60">
+                      <td className="px-4 py-3">{transaction.date}</td>
+                      <td className="px-4 py-3">{transaction.category}</td>
+                      <td className="px-4 py-3 capitalize">
+                        <span
+                          className={`rounded-full px-2 py-1 text-xs ${
+                            transaction.type === 'income'
+                              ? 'bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300'
+                              : 'bg-rose-100 text-rose-700 dark:bg-rose-900/40 dark:text-rose-300'
+                          }`}
+                        >
+                          {transaction.type}
+                        </span>
+                      </td>
+                      <td className="px-4 py-3 font-medium">{formatCurrency(transaction.amount)}</td>
+                      <td className="px-4 py-3 text-slate-500">{transaction.note || '--'}</td>
+                      {role === 'admin' ? (
+                        <td className="px-4 py-3">
+                          <button
+                            type="button"
+                            onClick={() => openEditModal(transaction)}
+                            className="rounded-lg border border-slate-200 px-3 py-1 text-xs text-slate-600 transition hover:bg-slate-100 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+                          >
+                            Edit
+                          </button>
+                        </td>
+                      ) : null}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </>
         ) : (
           <div className="p-10 text-center">
             <p className="font-medium text-slate-700 dark:text-slate-200">No transactions found.</p>

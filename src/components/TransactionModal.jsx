@@ -58,14 +58,14 @@ function TransactionModal({ open, mode, transaction, onClose, onSubmit }) {
   }
 
   return (
-    <div className="fixed inset-0 z-40 flex items-center justify-center bg-slate-950/55 p-4">
+    <div className="fixed inset-0 z-40 flex items-center justify-center overflow-y-auto bg-slate-950/55 p-3 sm:p-4">
       <form
         ref={modalRef}
         onSubmit={handleSubmit}
-        className="w-full max-w-xl rounded-3xl border border-slate-200 bg-white p-6 shadow-2xl dark:border-slate-700 dark:bg-slate-900"
+        className="my-6 w-full max-w-xl rounded-3xl border border-slate-200 bg-white p-4 shadow-2xl dark:border-slate-700 dark:bg-slate-900 sm:p-6"
       >
         <div className="mb-5 flex items-center justify-between">
-          <h4 className="font-display text-xl text-slate-900 dark:text-slate-100">
+          <h4 className="font-display text-lg text-slate-900 dark:text-slate-100 sm:text-xl">
             {mode === 'edit' ? 'Edit Transaction' : 'Add Transaction'}
           </h4>
           <button

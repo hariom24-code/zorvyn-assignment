@@ -46,17 +46,17 @@ function DashboardPage({ activeSection, onNavigate }) {
 
   return (
     <div className={`min-h-screen ${darkMode ? 'dark' : ''}`}>
-      <div className="mx-auto grid max-w-[1360px] gap-4 px-4 py-4 lg:grid-cols-[260px_1fr] lg:px-6 lg:py-6">
+      <div className="mx-auto grid max-w-[1360px] gap-4 px-3 py-3 sm:px-4 sm:py-4 lg:grid-cols-[260px_1fr] lg:px-6 lg:py-6">
         <Sidebar activeSection={activeSection} onNavigate={onNavigate} />
 
-        <main ref={scopeRef} className="space-y-5 rounded-3xl border border-slate-200/80 bg-white/40 p-4 shadow-soft backdrop-blur-sm dark:border-slate-800 dark:bg-slate-950/40 md:p-6">
+        <main ref={scopeRef} className="space-y-5 rounded-3xl border border-slate-200/80 bg-white/40 p-3 shadow-soft backdrop-blur-sm dark:border-slate-800 dark:bg-slate-950/40 sm:p-4 md:p-6">
           <section id="overview" className="scroll-mt-8">
-            <div className="reveal-item flex flex-wrap items-center justify-between gap-3">
+            <div className="reveal-item flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
               <div>
                 <p className="text-xs uppercase tracking-[0.2em] text-brand-500">Financial Workspace</p>
-                <h2 className="mt-2 font-display text-3xl text-slate-900 dark:text-slate-100">Dashboard Overview</h2>
+                <h2 className="mt-2 font-display text-2xl text-slate-900 dark:text-slate-100 md:text-3xl">Dashboard Overview</h2>
               </div>
-              <div className="flex flex-wrap items-center gap-2">
+              <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center">
                 <RoleSwitcher role={role} setRole={setRole} />
                 <ThemeToggle darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
               </div>
