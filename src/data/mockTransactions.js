@@ -1,0 +1,20 @@
+export const mockTransactions = [
+  { id: 'txn-001', date: '2026-01-03', amount: 3200, category: 'Salary', type: 'income', note: 'Primary paycheck' },
+  { id: 'txn-002', date: '2026-01-05', amount: 280, category: 'Groceries', type: 'expense', note: 'Weekly groceries' },
+  { id: 'txn-003', date: '2026-01-07', amount: 120, category: 'Transport', type: 'expense', note: 'Metro card recharge' },
+  { id: 'txn-004', date: '2026-01-11', amount: 620, category: 'Freelance', type: 'income', note: 'Website revamp project' },
+  { id: 'txn-005', date: '2026-01-14', amount: 180, category: 'Utilities', type: 'expense', note: 'Electricity and water' },
+  { id: 'txn-006', date: '2026-01-20', amount: 420, category: 'Dining', type: 'expense', note: 'Team dinner' },
+  { id: 'txn-007', date: '2026-02-02', amount: 3200, category: 'Salary', type: 'income', note: 'Primary paycheck' },
+  { id: 'txn-008', date: '2026-02-08', amount: 340, category: 'Groceries', type: 'expense', note: 'Family groceries' },
+  { id: 'txn-009', date: '2026-02-12', amount: 150, category: 'Health', type: 'expense', note: 'Pharmacy and consultation' },
+  { id: 'txn-010', date: '2026-02-15', amount: 780, category: 'Freelance', type: 'income', note: 'Landing page design' },
+  { id: 'txn-011', date: '2026-02-19', amount: 210, category: 'Subscriptions', type: 'expense', note: 'SaaS and streaming renewals' },
+  { id: 'txn-012', date: '2026-02-24', amount: 400, category: 'Shopping', type: 'expense', note: 'Clothing and accessories' },
+  { id: 'txn-013', date: '2026-03-01', amount: 3200, category: 'Salary', type: 'income', note: 'Primary paycheck' },
+  { id: 'txn-014', date: '2026-03-04', amount: 310, category: 'Groceries', type: 'expense', note: 'Monthly staples' },
+  { id: 'txn-015', date: '2026-03-10', amount: 90, category: 'Transport', type: 'expense', note: 'Ride sharing' },
+  { id: 'txn-016', date: '2026-03-13', amount: 540, category: 'Bonus', type: 'income', note: 'Performance incentive' },
+  { id: 'txn-017', date: '2026-03-17', amount: 260, category: 'Entertainment', type: 'expense', note: 'Weekend outing' },
+  { id: 'txn-018', date: '2026-03-22', amount: 190, category: 'Utilities', type: 'expense', note: 'Internet + phone bill' }
+]
